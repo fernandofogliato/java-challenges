@@ -1,4 +1,4 @@
-package br.com.fogliato;
+package br.com.fogliato.arrays;
 
 import java.util.Scanner;
 

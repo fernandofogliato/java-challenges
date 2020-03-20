@@ -13,4 +13,12 @@ class MakingAnagramsTest {
         int countDeleteChars = MakingAnagrams.makeAnagram(a, b);
         assertThat(countDeleteChars).isEqualTo(4);
     }
+
+    @Test
+    void makingAnagrams_30DeletedChars() {
+        String a = "fcrxzwscanmligyxyvym";
+        String b = "jxwtrhvujlmrpdoqbisbwhmgpmeoke";
+        int countDeleteChars = MakingAnagrams.makeAnagram(a, b);
+        assertThat(countDeleteChars).isEqualTo(30);
+    }
 }

@@ -6,18 +6,6 @@ import java.util.Scanner;
 // https://www.hackerrank.com/challenges/minimum-swaps-2
 public class MinimumSwaps {
 
-    // Complete the minimumSwaps function below.
-    static int swap(int[] arr, int begin, int end) {
-        int swaps = 0;
-        for (int i = begin; i <= end; i++) {
-            if (arr[i] > arr[end]) {
-                swapPositions(arr, i, end);
-                swaps++;
-            }
-        }
-        return swaps;
-    }
-
     static void swapPositions(int[] arr, int posA, int posB) {
         int aux = arr[posB];
         arr[posB] = arr[posA];
@@ -26,9 +14,17 @@ public class MinimumSwaps {
 
     static int minimumSwaps(int[] arr) {
         int swaps = 0;
-        int mid = arr.length/2;
-        swaps += swap(arr, 0, mid);
-        swaps += swap(arr, mid, arr.length-1);
+        int n = arr.length;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == (i + 1)) {
+                continue;
+            }
+
+            swapPositions(arr, i, arr[i] - 1);
+            swaps++;
+            i--;
+        }
         return swaps;
     }
 

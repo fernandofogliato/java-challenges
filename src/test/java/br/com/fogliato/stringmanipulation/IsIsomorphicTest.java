@@ -10,20 +10,20 @@ public class IsIsomorphicTest {
     void case1() {
         String s = "egg";
         String t = "add";
-        assertThat(IsIsomorphic.isIsomorphic(s, t)).isEqualTo(true);
+        assertThat(IsIsomorphic.isIsomorphic(s, t)).isTrue();
     }
 
     @Test
     void case2() {
         String s = "foo";
         String t = "bar";
-        assertThat(IsIsomorphic.isIsomorphic(s, t)).isEqualTo(false);
+        assertThat(IsIsomorphic.isIsomorphic(s, t)).isFalse();
     }
 
     @Test
     void case3() {
         String s = "paper";
         String t = "title";
-        assertThat(IsIsomorphic.isIsomorphic(s, t)).isEqualTo(true);
+        assertThat(IsIsomorphic.isIsomorphic(s, t)).isTrue();
     }
 }

@@ -1,26 +1,7 @@
 package br.com.fogliato.linkedlists;
 
-class ListNode {
-     int val;
-     ListNode next;
-     ListNode() {}
-     ListNode(int val) { this.val = val; }
-     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder(val + ",");
-        ListNode aux = next;
-        while (aux != null) {
-            result.append(aux.val + ",");
-            aux = aux.next;
-        }
-        return result.toString();
-    }
-}
-
 // https://leetcode.com/problems/merge-two-sorted-lists/
-class MergeTwoSortedLists {
+public class MergeTwoSortedLists {
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode sorted = new ListNode(-1);
         ListNode cur = sorted;

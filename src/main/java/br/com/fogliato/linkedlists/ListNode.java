@@ -1,11 +1,8 @@
 package br.com.fogliato.linkedlists;
 
 public class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
+    public int val;
+    public ListNode next;
 
     public ListNode(int val) {
         this.val = val;
@@ -18,6 +15,9 @@ public class ListNode {
 
     @Override
     public String toString() {
+        if (DetectCycleLinkedList.detectCycle(this) != null) {
+            return "";
+        }
         StringBuilder result = new StringBuilder();
         result.append(val);
         ListNode aux = next;

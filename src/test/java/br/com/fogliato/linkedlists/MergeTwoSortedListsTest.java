@@ -1,7 +1,5 @@
-package br.com.fogliato.arrays;
+package br.com.fogliato.linkedlists;
 
-import br.com.fogliato.linkedlists.ListNode;
-import br.com.fogliato.linkedlists.MergeTwoSortedLists;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

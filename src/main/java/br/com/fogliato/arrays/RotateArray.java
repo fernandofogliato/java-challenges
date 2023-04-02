@@ -5,10 +5,7 @@ public class RotateArray {
 
     public void rotate(int[] nums, int k) {
         var n = nums.length;
-        k %= n;
-        if (n < k) {
-            return;
-        }
+        k %= n; // Number of swaps. K can be greater than the size of the array
         reverse(0, n-1, nums);
         reverse(0, k-1, nums);
         reverse(k, n-1, nums);

@@ -11,7 +11,7 @@ public class RotateArray {
         reverse(k, n-1, nums);
     }
 
-    private void reverse(int i, int j, int [] nums){
+    private void reverse(int i, int j, int [] nums) {
         while (i < j) {
             int temp = nums[i];
             nums[i] = nums[j];

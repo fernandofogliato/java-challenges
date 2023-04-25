@@ -26,4 +26,11 @@ class ValidAnagramTest {
         String t = "ab";
         assertThat(new ValidAnagram().isAnagram(s, t)).isFalse();
     }
+
+    @Test
+    public void case4() {
+        String s = "aacc";
+        String t = "ccac";
+        assertThat(new ValidAnagram().isAnagram(s, t)).isFalse();
+    }
 }

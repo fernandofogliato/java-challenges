@@ -17,8 +17,8 @@ public class ValidAnagram {
         for (int i = 0; i < s.length(); i++) {
             char cS = s.charAt(i);
             char cT = t.charAt(i);
-            counterS.put(cS, counterS.getOrDefault(cS, 1));
-            counterT.put(cT, counterS.getOrDefault(cT, 1));
+            counterS.put(cS, counterS.getOrDefault(cS, 0) + 1);
+            counterT.put(cT, counterT.getOrDefault(cT, 0) + 1);
         }
 
         for (Map.Entry<Character, Integer> entry: counterS.entrySet()) {

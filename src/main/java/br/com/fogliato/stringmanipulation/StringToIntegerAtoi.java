@@ -32,14 +32,9 @@ public class StringToIntegerAtoi {
                 break;
             }
 
-            // Check if the number will be out the maximum integer value
-            if (result * sign > Integer.MAX_VALUE/10 || (result * sign == Integer.MAX_VALUE/10 && Character.getNumericValue(c) > 7)) {
-                return Integer.MAX_VALUE;
-            }
-
-            // Check if the number will be out the minimum integer value
-            if (result * sign < Integer.MIN_VALUE/10 || (result * sign == Integer.MIN_VALUE/10 && Character.getNumericValue(c) > 8)) {
-                return Integer.MIN_VALUE;
+            // Check if the number will be out the maximum/minimum integer value
+            if (result > Integer.MAX_VALUE/10 || (result == Integer.MAX_VALUE/10 && Character.getNumericValue(c) > 7)) {
+                return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }
             result = result * 10 + Character.getNumericValue(c);
         }

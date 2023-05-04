@@ -4,14 +4,14 @@ package br.com.fogliato.linkedlists;
 public class PalindromeLinkedList {
 
     ListNode findMiddle(ListNode head) {
-        ListNode t = head;
-        ListNode h = head;
+        ListNode fast = head;
+        ListNode slow = head;
 
-        if (h.next != null && h.next.next != null) {
-            h = h.next.next;
-            t = t.next;
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
-        return t;
+        return slow;
     }
 
     ListNode reverse(ListNode head) {
@@ -19,10 +19,10 @@ public class PalindromeLinkedList {
         ListNode curr = head;
 
         while(curr != null) {
-            ListNode nxt = curr.next;
+            ListNode nextTemp = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = nxt;
+            curr = nextTemp;
         }
         return prev;
     }
@@ -32,16 +32,17 @@ public class PalindromeLinkedList {
             return true;
         }
 
-        ListNode middle = findMiddle(head);
-        ListNode secondHalf = reverse(middle.next);
+        ListNode middleNode = findMiddle(head);
+        ListNode secondHalf = reverse(middleNode.next);
 
-        ListNode start = head;
-        while (secondHalf != null && start!=null) {
-            if (start.val != secondHalf.val) {
+        ListNode p1 = head;
+        ListNode p2 = secondHalf;
+        while (p1 != null && p2 != null) {
+            if (p1.val != p2.val) {
                 return false;
             }
-            start = start.next;
-            secondHalf = secondHalf.next;
+            p1 = p1.next;
+            p2 = p2.next;
         }
         return true;
     }

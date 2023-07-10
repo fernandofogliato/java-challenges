@@ -21,4 +21,13 @@ class FindClosestValueInBSTTest {
 
         assertThat(FindClosestValueInBST.findClosestValueInBst(tree, 12)).isEqualTo(13);
     }
+
+    @Test
+    public void case2() {
+        FindClosestValueInBST.BST tree = new FindClosestValueInBST.BST(2);
+        tree.left = new FindClosestValueInBST.BST(1);
+        tree.right = new FindClosestValueInBST.BST(3);
+
+        assertThat(FindClosestValueInBST.findClosestValueInBst(tree, -1)).isEqualTo(1);
+    }
 }

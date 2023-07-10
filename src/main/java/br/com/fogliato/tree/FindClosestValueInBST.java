@@ -6,7 +6,7 @@ public class FindClosestValueInBST {
     // Space complexity O(1)
     public static int findClosestValueInBst(BST tree, int target) {
         BST node = tree;
-        int closestValue = 0;
+        int closestValue = Integer.MIN_VALUE;
         while (node != null) {
             // Check if the node has a closer value
             if (Math.abs(target - closestValue) > Math.abs(target - node.value)) {

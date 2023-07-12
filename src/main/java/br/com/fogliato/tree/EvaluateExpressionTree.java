@@ -11,23 +11,23 @@ public class EvaluateExpressionTree {
     -4: Multiplication operator, multiplying the left and right subtrees.
      */
     public static int evaluateExpressionTree(BinaryTree tree) {
-        if (tree == null) {
-            return 0;
+        if (tree.value >= 0) {
+            return tree.value;
         }
 
-        if (tree.value == -4) {
-            return evaluateExpressionTree(tree.left) * evaluateExpressionTree(tree.right);
-        }
-        if (tree.value == -3) {
-            return evaluateExpressionTree(tree.left) / evaluateExpressionTree(tree.right);
+        int leftValue = evaluateExpressionTree(tree.left);
+        int rightValue = evaluateExpressionTree(tree.right);
+
+        if (tree.value == -1) {
+            return leftValue + rightValue;
         }
         if (tree.value == -2) {
-            return evaluateExpressionTree(tree.left) - evaluateExpressionTree(tree.right);
+            return leftValue - rightValue;
         }
-        if (tree.value == -1) {
-            return evaluateExpressionTree(tree.left) + evaluateExpressionTree(tree.right);
+        if (tree.value == -3) {
+            return leftValue / rightValue;
         }
-        return tree.value;
+        return leftValue * rightValue;
     }
 
     static class BinaryTree {

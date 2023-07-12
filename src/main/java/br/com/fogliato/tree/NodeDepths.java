@@ -26,21 +26,16 @@ public class NodeDepths {
         return sumOfDepths;
     }
 
-    // sumNodesUsingRecursion(root, 0);
+    /*
+    public static int nodeDepths(BinaryTree root) {
+        return sumNodes(root, 0);
+    }
+     */
     private static int sumNodesUsingRecursion(BinaryTree node, int depth) {
         if (node == null) {
             return 0;
         }
-        int sum = depth;
-        depth++;
-        if (node.left != null) {
-            sum += sumNodesUsingRecursion(node.left, depth);
-        }
-
-        if (node.right != null) {
-            sum += sumNodesUsingRecursion(node.right, depth);
-        }
-        return sum;
+        return depth + sumNodesUsingRecursion(node.left, depth+1) + sumNodesUsingRecursion(node.right, depth+1);
     }
 
     static class NodeInfo {

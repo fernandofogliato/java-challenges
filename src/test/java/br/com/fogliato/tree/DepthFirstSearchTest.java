@@ -16,8 +16,8 @@ class DepthFirstSearchTest {
         DepthFirstSearch.Node nodeB = new DepthFirstSearch.Node("B");
         DepthFirstSearch.Node nodeE = new DepthFirstSearch.Node("E");
         DepthFirstSearch.Node nodeF = new DepthFirstSearch.Node("F");
-        nodeF.children.add(new DepthFirstSearch.Node("I"));
-        nodeF.children.add(new DepthFirstSearch.Node("J"));
+        nodeF.addChild("I");
+        nodeF.addChild("J");
         nodeB.children.add(nodeE);
         nodeB.children.add(nodeF);
 
@@ -25,11 +25,11 @@ class DepthFirstSearchTest {
 
         // Children node D
         DepthFirstSearch.Node nodeG = new DepthFirstSearch.Node("G");
-        nodeG.children.add(new DepthFirstSearch.Node("K"));
+        nodeG.addChild("K");
 
         DepthFirstSearch.Node nodeD = new DepthFirstSearch.Node("D");
         nodeD.children.add(nodeG);
-        nodeD.children.add(new DepthFirstSearch.Node("H"));
+        nodeD.addChild("H");
 
         // Children root
         root.children.add(nodeB);

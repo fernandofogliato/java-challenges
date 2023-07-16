@@ -14,7 +14,6 @@ public class GroupAnagrams {
         }
 
         Map<String, List<String>> anagrams = new HashMap<>();
-
         for (String s : strs) {
             int[] count = new int[26];
             for (char c : s.toCharArray()) {

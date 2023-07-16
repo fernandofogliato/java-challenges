@@ -12,16 +12,12 @@ public class ProductSum {
     private static int productSum(List<Object> array, int depth)  {
         int sum = 0;
         for (Object obj: array) {
-            if (obj instanceof Integer) {
-                sum = sum + (int) obj;
-            }
-
             if (obj instanceof List) {
-                depth++;
-                sum = sum + depth * productSum((List<Object>) obj, depth);
-                depth--;
+                sum += productSum((List<Object>) obj, depth + 1);
+            } else {
+                sum += (int) obj;
             }
         }
-        return sum;
+        return sum * depth;
     }
 }

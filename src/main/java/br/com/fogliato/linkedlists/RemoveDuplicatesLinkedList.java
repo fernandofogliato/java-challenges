@@ -28,15 +28,15 @@ public class RemoveDuplicatesLinkedList {
 
     public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
         LinkedList node = linkedList;
-        LinkedList nextNode = linkedList.next;
+        LinkedList nextDistinctNode = linkedList.next;
 
         while (node != null) {
-            if (nextNode != null && node.value == nextNode.value) {
-                nextNode = nextNode.next;
-                node.next = nextNode;
+            if (nextDistinctNode != null && node.value == nextDistinctNode.value) {
+                nextDistinctNode = nextDistinctNode.next;
+                node.next = nextDistinctNode;
             } else {
                 node = node.next;
-                nextNode = node != null ? node.next : null;
+                nextDistinctNode = node != null ? node.next : null;
             }
         }
         return linkedList;

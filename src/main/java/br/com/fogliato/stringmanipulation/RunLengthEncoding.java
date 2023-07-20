@@ -1,5 +1,6 @@
 package br.com.fogliato.stringmanipulation;
 
+// https://www.algoexpert.io/questions/run-length-encoding
 public class RunLengthEncoding {
 
     public static String runLengthEncoding(String string) {

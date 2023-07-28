@@ -4,6 +4,8 @@ import java.util.List;
 
 // https://www.algoexpert.io/questions/move-element-to-end
 public class MoveElementToEnd {
+    // Time O(n)
+    // Space O(1)
     public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
         int leftPointer = 0;
         int rightPointer = array.size()-1;

@@ -7,7 +7,7 @@ import java.util.List;
 public class SpiralTraverse {
 
     // Time O(n)
-    // Space O(1)
+    // Space O(n)
     public static List<Integer> spiralTraverse(int[][] array) {
         int startRow = 0;
         int startCol = 0;

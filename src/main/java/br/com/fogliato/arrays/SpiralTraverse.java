@@ -27,14 +27,17 @@ public class SpiralTraverse {
                 result.add(array[row][endCol]);
             }
 
-            // From left bottom to right bottom
-            for (int col = endCol-1; col >= startCol; col--) {
-                result.add(array[endRow][col]);
-            }
+            // Avoid duplicated elements if the matrix consists of a single row or single column
+            if (endRow != startRow && startCol != endCol) {
+                // From right bottom to left bottom
+                for (int col = endCol - 1; col > startCol; col--) {
+                    result.add(array[endRow][col]);
+                }
 
-            // From bottom left to top left
-            for (int row = endRow-1; row >= startRow+1; row--) {
-                result.add(array[row][startCol]);
+                // From bottom left to top left
+                for (int row = endRow; row > startRow; row--) {
+                    result.add(array[row][startCol]);
+                }
             }
 
             startRow++;

@@ -31,4 +31,24 @@ class SpiralTraverseTest {
         assertThat(SpiralTraverse.spiralTraverse(array))
                 .containsExactly(19, 32, 33, 34, 25, 8, 11, 9, 6, 7, 10, 27, 28, 29, 30, 17, 20, 1, 18, 16, 15, 14, 13, 12, 26, 5, 24, 23, 22, 21, 2, 31, 36, 35, 4, 3);
     }
+
+    @Test
+    public void case3() {
+        int[][] array = new int[][] {
+                new int[] {1, 2, 3, 4},
+                new int[] {10, 11, 12, 5},
+                new int[] {9, 8, 7, 6}
+        };
+        assertThat(SpiralTraverse.spiralTraverse(array))
+                .containsExactly(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+    }
+
+    @Test
+    public void case4() {
+        int[][] array = new int[][] {
+                new int[] {1, 3, 2, 5, 4, 7, 6}
+        };
+        assertThat(SpiralTraverse.spiralTraverse(array))
+                .containsExactly(1, 3, 2, 5, 4, 7, 6);
+    }
 }

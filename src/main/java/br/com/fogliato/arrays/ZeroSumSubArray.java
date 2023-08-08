@@ -6,6 +6,8 @@ import java.util.Set;
 // https://www.algoexpert.io/questions/zero-sum-subarray
 public class ZeroSumSubArray {
 
+    // Time O(n)
+    // Space O(n)
     public static boolean zeroSumSubArray(int[] nums) {
         Set<Integer> sums = new HashSet<>();
         sums.add(0);

@@ -23,4 +23,10 @@ class MajorityElementTest {
         int[] array = new int[] { 2 };
         assertThat(MajorityElement.majorityElement(array)).isEqualTo(2);
     }
+
+    @Test
+    public void case4() {
+        int[] array = new int[] { 3, 3, 1 };
+        assertThat(MajorityElement.majorityElement(array)).isEqualTo(3);
+    }
 }

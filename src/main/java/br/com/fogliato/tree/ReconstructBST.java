@@ -20,30 +20,42 @@ public class ReconstructBST {
                     "value=" + value +
                     '}';
         }
+
+        public BST(int value, BST left, BST right) {
+            this.value = value;
+            this.left = left;
+            this.right = right;
+        }
     }
 
+    static class TreeInfo {
+        int rootIdx;
+
+        public TreeInfo(int rootIdx) {
+            this.rootIdx = rootIdx;
+        }
+    }
+
+    // Time O(n)
+    // Space O(n)
     public static BST reconstructBst(List<Integer> preOrderTraversalValues) {
-        BST root = new BST(preOrderTraversalValues.get(0));
-        for (int i = 1; i < preOrderTraversalValues.size(); i++) {
-            int value = preOrderTraversalValues.get(i);
-            insertBst(value, root);
-        }
-        return root;
+        TreeInfo treeInfo = new TreeInfo(0);
+        return reconstructBstFromRange(Integer.MIN_VALUE, Integer.MAX_VALUE, preOrderTraversalValues, treeInfo);
     }
 
-    private static void insertBst(int value, BST tree) {
-        if (value < tree.value) {
-            if (tree.left != null) {
-                insertBst(value, tree.left);
-                return;
-            }
-            tree.left = new BST(value);
-        } else {
-            if (tree.right != null) {
-                insertBst(value, tree.right);
-                return;
-            }
-            tree.right = new BST(value);
+    public static BST reconstructBstFromRange(int lowerBound, int upperBound, List<Integer> preOrderTraversalValues, TreeInfo currentSubtreeInfo) {
+        if (currentSubtreeInfo.rootIdx == preOrderTraversalValues.size()) {
+            return null;
         }
+
+        int rootValue = preOrderTraversalValues.get(currentSubtreeInfo.rootIdx);
+        if (rootValue < lowerBound || rootValue >= upperBound) {
+            return null;
+        }
+
+        currentSubtreeInfo.rootIdx += 1;
+        BST leftSubtree = reconstructBstFromRange(lowerBound, rootValue, preOrderTraversalValues, currentSubtreeInfo);
+        BST rightSubtree = reconstructBstFromRange(rootValue, upperBound, preOrderTraversalValues, currentSubtreeInfo);
+        return new BST(rootValue, leftSubtree, rightSubtree);
     }
 }

@@ -39,7 +39,7 @@ public class FindSuccessor {
     }
 
     public static BinaryTree getRightmostParent(BinaryTree node) {
-        BinaryTree currentNode = node.right;
+        BinaryTree currentNode = node;
         while (currentNode.parent != null && currentNode.parent.right == currentNode) {
             currentNode = currentNode.parent;
         }

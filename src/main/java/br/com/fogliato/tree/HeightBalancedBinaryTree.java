@@ -24,7 +24,7 @@ public class HeightBalancedBinaryTree {
         int heightLeftTree = getHeight(tree.left);
         int heightRightTree = getHeight(tree.right);
         int diff = Math.abs(heightLeftTree - heightRightTree);
-        if (diff < 0 || diff > 1) {
+        if (diff <= 0) {
             return false;
         }
         return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right);

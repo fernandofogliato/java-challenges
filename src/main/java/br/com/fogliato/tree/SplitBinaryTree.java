@@ -15,15 +15,12 @@ public class SplitBinaryTree {
     }
 
     public int splitBinaryTree(BinaryTree tree) {
-        if (tree == null) {
-            return 0;
-        }
         int treeSum = getSum(tree);
-        int target = treeSum / 2;
+        int targetSubtreeSize = treeSum / 2;
         if (treeSum % 2 != 0 || treeSum == tree.value) {
             return 0;
         }
-        return findEdgeNode(tree, target);
+        return findEdgeNode(tree, targetSubtreeSize);
     }
 
     private int getSum(BinaryTree node) {
@@ -40,8 +37,8 @@ public class SplitBinaryTree {
             return 0;
         }
 
-        int sum = getSum(node);
-        if (sum == target) {
+        int rootSum = getSum(node);
+        if (rootSum == target) {
             return target;
         }
         int edgeLeft = findEdgeNode(node.left, target);

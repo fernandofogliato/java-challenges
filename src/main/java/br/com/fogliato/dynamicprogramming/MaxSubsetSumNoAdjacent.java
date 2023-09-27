@@ -13,14 +13,14 @@ public class MaxSubsetSumNoAdjacent {
             return array[0];
         }
 
-        int first = array[0];
-        int second = Math.max(array[0], array[1]);
+        int currentMax = Math.max(array[0], array[1]);
+        int previousMax = array[0];
 
         for (int i = 2; i < array.length; i++) {
-            int currentSum = Math.max(first, second + array[i]);
-            second = first;
-            first = currentSum;
+            int currentSum = Math.max(currentMax, previousMax + array[i]);
+            previousMax = currentMax;
+            currentMax = currentSum;
         }
-        return first;
+        return currentMax;
     }
 }

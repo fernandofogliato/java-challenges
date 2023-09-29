@@ -5,6 +5,7 @@ public class MaxSubsetSumNoAdjacent {
 
     // O(n) time | O(1) space where N is the number of elements in the array
     public static int maxSubsetSumNoAdjacent(int[] array) {
+
         if (array == null || array.length == 0) {
             return 0;
         }

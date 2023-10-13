@@ -63,4 +63,28 @@ class ProgramLinkedListConstructionTest {
         doublyLinkedList.insertAfter(node2, node1);
         doublyLinkedList.insertBefore(node3, node4);
     }
+
+    @Test
+    public void case4() {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+        Node node5 = new Node(5);
+        Node node6 = new Node(6);
+        Node node7 = new Node(7);
+
+        doublyLinkedList.setHead(node1);
+        doublyLinkedList.insertAfter(doublyLinkedList.head, node2);
+        doublyLinkedList.insertAfter(node2, node3);
+        doublyLinkedList.insertAfter(node3, node4);
+        doublyLinkedList.insertAfter(node4, node5);
+        doublyLinkedList.insertAfter(node5, node6);
+        doublyLinkedList.insertAfter(node6, node7);
+
+        doublyLinkedList.insertAtPosition(7, node1);
+        doublyLinkedList.insertAtPosition(1, node1);
+        doublyLinkedList.insertAtPosition(2, node1);
+    }
 }

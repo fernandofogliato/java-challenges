@@ -22,26 +22,12 @@ class ProgramLinkedListConstruction {
         }
 
         public void setHead(Node node) {
-            movePointersExistingNode(node);
-
-            // If we are setting teh tail as the head
-            if (isTail(node)) {
-                tail = node.prev;
+            if (head == null) {
+                head = node;
+                tail = node;
+                return;
             }
-
-            if (head != null) {
-                head.prev = node;
-            }
-            node.prev = null;
-            node.next = head;
-            head = node;
-            if (tail == null) {
-                tail = head;
-            }
-        }
-
-        private boolean isTail(Node node) {
-            return node.next == null && node.prev != null;
+            insertBefore(head, node);
         }
 
         private void movePointersExistingNode(Node node) {
@@ -52,80 +38,55 @@ class ProgramLinkedListConstruction {
             if (node.next != null) {
                 node.next.prev = node.prev;
             }
+            node.next = null;
+            node.prev = null;
         }
 
         public void setTail(Node node) {
-            movePointersExistingNode(node);
-
-            // If is the head that we are setting as the tail
-            if (isHead(node)) {
-                head = node.next;
+            if (tail == null) {
+                head = node;
+                tail = node;
+                return;
             }
-
-            node.next = null;
-            if (tail != null) {
-                tail.next = node;
-            }
-            node.prev = tail;
-            tail = node;
-            if (head == null) {
-                head = tail;
-            }
-        }
-
-        private boolean isHead(Node node) {
-            return node.prev == null && node.next != null;
+            insertAfter(tail, node);
         }
 
         public void insertBefore(Node node, Node nodeToInsert) {
-            movePointersExistingNode(nodeToInsert);
-
-            if (isTail(nodeToInsert)) {
-                tail = nodeToInsert.prev;
+            if (nodeToInsert == head && nodeToInsert == tail) {
+                return;
             }
-
-            if (isHead(nodeToInsert)) {
-                head = nodeToInsert.next;
-            }
+            remove(nodeToInsert);
 
             nodeToInsert.next = node;
             nodeToInsert.prev = node.prev;
 
-            if (node.prev != null) {
+            if (node.prev == null) {
+                head = nodeToInsert;
+            } else {
                 node.prev.next = nodeToInsert;
             }
             node.prev = nodeToInsert;
-
-            if (nodeToInsert.prev == null) {
-                head = nodeToInsert;
-            }
         }
 
         public void insertAfter(Node node, Node nodeToInsert) {
-            movePointersExistingNode(nodeToInsert);
-
-            if (isHead(nodeToInsert)) {
-                head = nodeToInsert.next;
+            if (nodeToInsert == head && nodeToInsert == tail) {
+                return;
             }
+            remove(nodeToInsert);
 
-            if (node.next != null) {
+            nodeToInsert.prev = node;
+            nodeToInsert.next = node.next;
+
+            if (node.next == null) {
+                tail = nodeToInsert;
+            } else {
                 node.next.prev = nodeToInsert;
             }
-            nodeToInsert.next = node.next;
-            nodeToInsert.prev = node;
             node.next = nodeToInsert;
-
-            if (nodeToInsert.next == null) {
-                setTail(nodeToInsert);
-            }
         }
 
         public void insertAtPosition(int position, Node nodeToInsert) {
-            if (position <= 2 && isHead(nodeToInsert)) {
-                return;
-            }
-
-            if (position <= 1) {
+            if (position == 1) {
                 setHead(nodeToInsert);
                 return;
             }
@@ -135,46 +96,33 @@ class ProgramLinkedListConstruction {
             while (node != null) {
                 if (pos == position) {
                     insertBefore(node, nodeToInsert);
-                    break;
+                    return;
                 }
                 node = node.next;
                 pos++;
             }
+            setTail(nodeToInsert);
         }
 
         public void removeNodesWithValue(int value) {
             Node node = head;
             while (node != null) {
+                Node temp = node.next;
                 if (node.value == value) {
-                    if (node.prev == null) {
-                        head = node.next;
-                    }
-                    if (node.next == null) {
-                        tail = node.prev;
-                    }
-
-                    movePointersExistingNode(node);
+                    remove(node);
                 }
-                node = node.next;
+                node = temp;
             }
         }
 
-        public void remove(Node nodeToDelete) {
-            Node node = head;
-            while (node != null) {
-                if (node.value == nodeToDelete.value) {
-                    if (node.prev == null) {
-                        head = node.next;
-                    }
-                    if (node.next == null) {
-                        tail = node.prev;
-                    }
-
-                    movePointersExistingNode(node);
-                    break;
-                }
-                node = node.next;
+        public void remove(Node node) {
+            if (head == node) {
+                head = node.next;
             }
+            if (tail == node) {
+                tail = node.prev;
+            }
+            movePointersExistingNode(node);
         }
 
         public boolean containsNodeWithValue(int value) {

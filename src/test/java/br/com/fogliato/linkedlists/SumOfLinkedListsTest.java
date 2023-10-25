@@ -1,8 +1,9 @@
 package br.com.fogliato.linkedlists;
 
 import br.com.fogliato.linkedlists.SumOfLinkedLists.LinkedList;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class SumOfLinkedListsTest {
 
@@ -18,9 +19,9 @@ class SumOfLinkedListsTest {
         linkedList2.next.next = new LinkedList(5);
 
         LinkedList result = SumOfLinkedLists.sumOfLinkedLists(linkedList1, linkedList2);
-        Assertions.assertThat(result.value).isEqualTo(1);
-        Assertions.assertThat(result.next.value).isEqualTo(9);
-        Assertions.assertThat(result.next.next.value).isEqualTo(2);
-        Assertions.assertThat(result.next.next.next.value).isEqualTo(2);
+        assertThat(result.value).isEqualTo(1);
+        assertThat(result.next.value).isEqualTo(9);
+        assertThat(result.next.next.value).isEqualTo(2);
+        assertThat(result.next.next.next.value).isEqualTo(2);
     }
 }

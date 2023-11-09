@@ -13,6 +13,7 @@ public class MergeBinaryTrees {
         }
     }
 
+    // O(n) time | O(h) space - where n is the number of nodes in the smaller of the two trees and h is the height of the shorter tree.
     public static BinaryTree mergeBinaryTrees(BinaryTree tree1, BinaryTree tree2) {
         if (tree1 == null) {
             return tree2;

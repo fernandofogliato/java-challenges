@@ -21,10 +21,13 @@ public class HeightBalancedBinaryTree {
     // Time O(n) time where n is the number of nodes
     // Space O(h) space where h is the height of the tree
     public static boolean heightBalancedBinaryTree(BinaryTree tree) {
+        if (tree == null) {
+            return true;
+        }
         int heightLeftTree = getHeight(tree.left);
         int heightRightTree = getHeight(tree.right);
         int diff = Math.abs(heightLeftTree - heightRightTree);
-        if (diff <= 0) {
+        if (diff < 0 || diff > 1) {
             return false;
         }
         return heightBalancedBinaryTree(tree.left) && heightBalancedBinaryTree(tree.right);

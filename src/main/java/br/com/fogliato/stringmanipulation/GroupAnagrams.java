@@ -5,6 +5,7 @@ import java.util.*;
 // https://www.algoexpert.io/questions/group-anagrams
 public class GroupAnagrams {
 
+    // O(w * n * log(n)) time | O(wn) space - where w is the number of words and n is the length of the longest word
     public static List<List<String>> groupAnagrams(List<String> words) {
         Map<String, List<String>> groups = new HashMap<>();
 

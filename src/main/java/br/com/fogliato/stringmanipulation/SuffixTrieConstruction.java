@@ -20,18 +20,14 @@ public class SuffixTrieConstruction {
         // O(n²) time | O(n²) space - where n is the length of the input string
         public void populateSuffixTrieFrom(String str) {
             for (int i = 0; i < str.length(); i++) {
-                Character suffix = str.charAt(i);
-
-                TrieNode topPointer = root.children.getOrDefault(suffix, new TrieNode());
-                root.children.put(suffix, topPointer);
-
-                TrieNode bottomPointer;
-                for (Character letter : str.substring(i+1).toCharArray()) {
-                    bottomPointer = topPointer.children.getOrDefault(letter, new TrieNode());
-                    topPointer.children.put(letter, bottomPointer);
-                    topPointer = bottomPointer;
+                TrieNode current = root;
+                for (int j = i; j < str.length(); j++) {
+                    Character letter = str.charAt(j);
+                    TrieNode node = current.children.getOrDefault(letter, new TrieNode());
+                    current.children.put(letter, node);
+                    current = node;
                 }
-                topPointer.children.put(endSymbol, null);
+                current.children.put(endSymbol, null);
             }
         }
 

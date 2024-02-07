@@ -5,24 +5,21 @@ public class ValidStartingCity {
 
     // O(n) time | O(1) space - where n is the number of cities
     public static int validStartingCity(int[] distances, int[] fuel, int mpg) {
-        int totalFuelAvailable = 0;
-        int currentCity = 0;
+        int milesRemaining = 0;
+        int milesRemainingStartingCity = 0;
         int startingCity = 0;
 
-        while (startingCity < distances.length) {
-            totalFuelAvailable = (totalFuelAvailable + fuel[currentCity] * mpg) - distances[currentCity];
-            if (totalFuelAvailable < 0) {
-                startingCity++;
-                totalFuelAvailable = 0;
-                currentCity = startingCity;
-                continue;
-            }
+        for (int cityIdx = 1; cityIdx < distances.length; cityIdx++) {
+            int distanceFromPreviousCity = distances[cityIdx - 1];
+            int fuelFromPreviousCity = fuel[cityIdx-1];
+            milesRemaining += fuelFromPreviousCity * mpg - distanceFromPreviousCity;
 
-            currentCity = currentCity+1 > distances.length-1 ? 0 : currentCity+1;
-            if (currentCity == startingCity) {
-                return startingCity;
+            if (milesRemaining < milesRemainingStartingCity) {
+                milesRemainingStartingCity = milesRemaining;
+                startingCity = cityIdx;
             }
         }
-        return -1;
+
+        return startingCity;
     }
 }

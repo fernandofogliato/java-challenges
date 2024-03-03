@@ -1,4 +1,4 @@
-package br.com.fogliato.dynamicprogramming;
+package br.com.fogliato.recursion;
 
 import org.junit.jupiter.api.Test;
 

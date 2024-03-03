@@ -1,4 +1,4 @@
-package br.com.fogliato.dynamicprogramming;
+package br.com.fogliato.recursion;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
